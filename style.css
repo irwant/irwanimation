@@ -210,7 +210,7 @@ iframe {
 
 .reveal{
   position: relative;
-  transform: translateX(50px);
+  transform: translateX(20px);
   opacity: 0;
   transition: 1s all ease;
 }
@@ -222,7 +222,7 @@ iframe {
 
 .revealmid{
   position: relative;
-  transform: translateX(-50px);
+  transform: translateX(-20px);
   opacity: 0;
   transition: 1s all ease;
 }
