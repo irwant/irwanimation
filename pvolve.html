@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #d6d6d6;
+            }
+            
+            .container{
+                width: 55%;
+                height: 35%;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+
+            }
+
+            .container_text{
+                padding-top: 1.5em;
+            }
+
+            #svg_pvolve{
+                display: block;
+                position: relative;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 30%;
+                margin: auto;
+
+            }
+
+            
+
+            #circle{
+                visibility: hidden;
+                stroke-dasharray: 150;
+                stroke-dasharray: 70;
+                animation: circleanim 3s ease-in-out infinite ;
+                
+                
+            }
+
+            #pvolveicon{
+                stroke-dasharray: 205;
+                stroke-dashoffset: -205;
+                animation: circleanim 5s ease-in-out ;
+                
+                
+                
+            }
+
+            #pvolveiconbg{
+                stroke-dasharray: 205;
+                stroke-dashoffset: -205;
+                animation: iconbg 5s ease-in-out forwards;
+                
+                
+            }
+
+            #edgebox{
+                stroke-dasharray: 137;
+                stroke-dashoffset: -137;
+                animation: edgeboxanim 1s ease-out forwards;
+                animation-delay: 5.3s;
+            }
+
+            #edgeboxleft{
+                stroke-dasharray: 26;
+                stroke-dashoffset: -26;
+                animation: boxlranim 0.5s ease-out forwards;
+                animation-delay: 6s;
+            }
+
+            #edgeboxright{
+                stroke-dasharray: 26;
+                stroke-dashoffset: -26;
+                animation: boxlranim 0.5s ease-out forwards;
+                animation-delay: 6s;
+            }
+
+            #edgeside{
+                stroke-dasharray: 22;
+                stroke-dashoffset: -22;
+                animation: edgesideanim 0.5s ease-out forwards;
+                animation-delay: 6s;
+            }
+
+            #pathpita{
+                stroke-dasharray: 32;
+                stroke-dashoffset: 32;
+                animation: pitaanim 1s ease-in-out forwards;
+                animation-delay: 6s;
+            }
+
+            #pathpita2{
+                stroke-dasharray: 32;
+                stroke-dashoffset: -32;
+                animation: pitaanim2 1s ease-in-out forwards;
+                animation-delay: 6s;
+            }
+
+            #pathlabel{
+                stroke-dasharray: 5;
+                stroke-dashoffset: -5;
+                animation: labelanim 0.5s ease-in forwards;
+                animation-delay: 6s;
+            }
+
+            #pathlabel2{
+                stroke-dasharray: 8;
+                stroke-dashoffset: -8;
+                animation: label2anim 0.5s ease-in forwards;
+                animation-delay: 6s;
+            }
+
+            #bridge_transition{
+                stroke-dasharray: 18;
+                stroke-dashoffset: -18;
+                animation: bridgeanim 0.5s ease-out ;
+                animation-delay: 5s;
+            }
+
+            #tittle{
+                display: block;
+                position: absolute;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                text-align: center;
+                text-transform: uppercase;
+                width: 100%;
+                padding-top: 8px;
+                animation: tittleanim 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
+                
+            }
+
+            #quote{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                padding-top: 8px;
+                opacity: 0;
+                animation: quoteanim 4s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
+                animation-delay: 2s;
+            }
+
+            #beshipped{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                text-align: center;
+                width: 100%;
+                padding-top: 8px;
+                opacity: 0;
+                animation: shippedanim 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
+                animation-delay: 3s;
+            }
+            
+            @keyframes shippedanim{
+                0%{
+                    transform: translateY(-30px) scaleY(2.5) scaleX(0.2);
+                    transform-origin: 50% 100%;
+                    filter: blur(40px);
+                    opacity: 0;
+                }
+                100%{
+                    transform: translateY(0) scaleY(1) scaleX(1);
+                    transform-origin: 50% 50%;
+                    filter: blur(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes quoteanim{
+                0%{
+                    transform: translateY(50px) scaleY(2.5) scaleX(0.2);
+                    transform-origin: 50% 100%;
+                    filter: blur(40px);
+                    opacity: 0;
+                }
+                30%{
+                    transform: translateY(0) scaleY(1) scaleX(1);
+                    transform-origin: 50% 50%;
+                    filter: blur(0);
+                    opacity: 1;
+                }
+                80%{
+                    transform: translateY(0) scaleY(1) scaleX(1);
+                    transform-origin: 50% 50%;
+                    filter: blur(0);
+                    opacity: 1;
+                }
+                100%{
+                    transform: translateY(40px) scaleY(1) scaleX(1);
+                    transform-origin: 50% 100%;
+                    filter: blur(20px);
+                    opacity: 0;
+                }
+                
+            }
+
+            @keyframes tittleanim{
+                0%{
+                    transform: translateY(50px) scaleY(2.5) scaleX(0.2);
+                    transform-origin: 50% 100%;
+                    filter: blur(40px);
+                    opacity: 0;
+                }
+                30%{
+                    transform: translateY(0) scaleY(1) scaleX(1);
+                    transform-origin: 50% 50%;
+                    filter: blur(0);
+                    opacity: 1;
+                }
+                80%{
+                    transform: translateY(0) scaleY(1) scaleX(1);
+                    transform-origin: 50% 50%;
+                    filter: blur(0);
+                    opacity: 1;
+                }
+                100%{
+                    transform: translateY(-20px) scaleY(1) scaleX(1);
+                    transform-origin: 50% 100%;
+                    filter: blur(20px);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes pitaanim{
+                to{
+                    stroke-dashoffset: 64;
+                }
+            }
+
+            @keyframes pitaanim2{
+                to{
+                    stroke-dashoffset: -64;
+                }
+            }
+
+            @keyframes labelanim{
+                to{
+                    stroke-dashoffset: -10;
+                }
+            }
+
+            @keyframes label2anim{
+                to{
+                    stroke-dashoffset: -16;
+                }
+            }
+
+            @keyframes edgesideanim{
+                to{
+                    stroke-dashoffset: -45;
+                }
+            }
+
+            @keyframes boxlranim{
+                to{
+                    stroke-dashoffset: -52;
+                }
+            }
+
+            @keyframes edgeboxanim{
+                to{
+                    stroke-dashoffset: -274;
+                }
+            }
+
+            @keyframes bridgeanim{
+                75%{
+                    stroke-dashoffset: -36;
+                }
+                100%{
+                    stroke-dashoffset: -53;
+                }
+            }
+
+            @keyframes iconbg {
+                50%{
+                    stroke-dashoffset: -410;
+                }
+                
+                100%{
+                    stroke-dashoffset: -615;
+                }
+            }
+
+            @keyframes circleanim{
+                75%{
+                    stroke-dashoffset: -820;
+                }
+                100%{
+                    stroke-dashoffset: -1020;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        
+<!--SVG file-->
+<div class="container">       
+<svg
+viewBox="0 0 49.472008 50.400867"
+version="1.1"
+id="svg_pvolve">
+    
+    <path
+    id="circle"
+    style="display:inline;opacity:1;fill:none;stroke:#000000;stroke-width:2.67889;stroke-linecap:square;stroke-linejoin:round"
+    d="M 48.132564,25.664884 A 23.396562,23.396562 0 0 1 24.736004,49.061424 23.396562,23.396562 0 0 1 1.339445,25.664884 23.396562,23.396562 0 0 1 24.736004,2.2683099 23.396562,23.396562 0 0 1 48.132564,25.664884 Z" />
+    <path
+    id="pvolveiconbg"
+    style="opacity:1;fill:none;stroke:#bebebe;stroke-width:2.67889;stroke-linecap:square;stroke-linejoin:round"
+    d="m 10.682565,34.583134 c 0,0 -6.286176,-0.0184 -7.590103,-0.0184 -1.123063,-2.73704 -1.753017,-5.76001 -1.753017,-8.90168 0,-12.92156 10.474997,-23.3965751 23.396559,-23.3965751 12.92157,0 23.39656,10.4750151 23.39656,23.3965751 0,12.92157 -10.47499,23.39654 -23.39656,23.39654 -3.09122,0 -6.169769,-0.66669 -8.871033,-1.75577 0,0 -0.03019,-15.07364 -0.03019,-21.38308 0,-5.28866 3.911619,-9.16253 9.144663,-9.16253 4.84653,0 8.67926,4.28041 8.67926,8.96876 0,5.76284 -4.97533,8.84509 -8.82713,8.84509 -1.556715,0 -3.413661,-0.0184 -3.835631,-0.0184" />
+    <path
+    id="pvolveicon"
+    style="opacity:1;fill:none;stroke:#000000;stroke-width:2.67889;stroke-linecap:square;stroke-linejoin:round"
+    d="m 10.682565,34.583134 c 0,0 -6.286176,-0.0184 -7.590103,-0.0184 -1.123063,-2.73704 -1.753017,-5.76001 -1.753017,-8.90168 0,-12.92156 10.474997,-23.3965751 23.396559,-23.3965751 12.92157,0 23.39656,10.4750151 23.39656,23.3965751 0,12.92157 -10.47499,23.39654 -23.39656,23.39654 -3.09122,0 -6.169769,-0.66669 -8.871033,-1.75577 0,0 -0.03019,-15.07364 -0.03019,-21.38308 0,-5.28866 3.911619,-9.16253 9.144663,-9.16253 4.84653,0 8.67926,4.28041 8.67926,8.96876 0,5.76284 -4.97533,8.84509 -8.82713,8.84509 -1.556715,0 -3.413661,-0.0184 -3.835631,-0.0184" />
+
+    <g
+    id="groupbox"
+    transform="translate(72.973098,-3.0098837)">
+        <path
+            style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+            d="m -55.940132,25.998031 -3.198475,0.808391 V 18.91654 L -43.152639,6.2858632"
+            id="pathpita" />
+        <path
+            style="display:inline;fill:none;stroke:#000000;stroke-width:2.679;stroke-linecap:round;stroke-linejoin:round "
+            d="m -68.372089,37.259287 -0.746418,-21.261856 18.361909,-11.6480577 23.203347,6.0675447 0.197565,20.910465 -15.230788,14.637595 z"
+            id="edgebox" />
+        <path
+            style="fill:none;stroke:#000000;stroke-width:2.679;stroke-linecap:square;stroke-linejoin:round "
+            d="M -43.391641,23.480607 -28.378955,11.214138"
+            id="edgeboxright" />
+        <path
+            style="fill:none;stroke:#000000;stroke-width:2.679;stroke-linecap:square;stroke-linejoin:round "
+            d="m -43.367587,23.812513 0.398129,21.042939"
+            id="edgeside" />
+        <path
+            style="fill:none;stroke:#000000;stroke-width:2.679;stroke-linecap:square;stroke-linejoin:round "
+            d="M -43.462677,23.534922 -67.739421,16.472917"
+            id="edgeboxleft" />
+        <path
+            style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round "
+            d="m -40.34825,36.795474 4.236474,-3.91066"
+            id="pathlabel2" />
+        <path
+            style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round "
+            d="m -40.360278,39.183525 2.96003,-2.732388"
+            id="pathlabel" />
+        <path
+        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+        d="M -37.698457,7.6973447 -53.244449,20.655908 v 7.451772 l -2.695683,-2.109649"
+        id="pathpita2" />
+    </g>
+    <path
+    style="opacity:1;fill:none;stroke:#000000;stroke-width:2.679;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+    d="M 20.246476,34.563418 H 7.119545 c -1.9178728,0 -2.3423002,-0.09219 -2.501366,-0.314274 0,0 -0.060555,-0.907703 -0.080611,-1.492404"
+    id="bridge_transition" />
+</svg>
+<!--SVG file-->
+
+<!--text for quote-->
+
+<div class="container_text">
+    <div id="tittle">Your order is being processed</div>
+    <div id="quote">if you can't stop thinking about it,<br><strong>Buy it</strong></br> </div>
+    <div id="beshipped">your order will be shipped</div>
+</div>
+<!--text for quote-->
+</div>
+
+<script>
+    var r_text = new Array ();
+    r_text[0] = "I was just thinking about you!";
+    r_text[1] = "You are a great example for others.";
+    r_text[2] = "You have great ideas.";
+    r_text[3] = "When I grow up I want to be you!";
+    r_text[4] = "I appreciate all of your opinions.";
+
+    var i = Math.floor(r_text.length * Math.random());
+    document.getElementById('quote').innerHTML = r_text[i];
+    
+
+</script>
+        
+
+    </body>
+</html>
